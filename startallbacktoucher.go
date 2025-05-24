@@ -19,6 +19,8 @@ func main() {
 	if err != nil {
 		fmt.Println("error", err)
 	}
+	fmt.Println("and finished press enter to leave (make sure you ran this as admin or else it will not work)")
+	fmt.Scanln()
 }
 
 func start(sel string) error {
@@ -123,7 +125,7 @@ func patchDLL(dllPath string) error {
 func setReg(path, name string, value uint32) error {
 	key, exists, err := registry.CreateKey(registry.LOCAL_MACHINE, path, registry.SET_VALUE)
 	if err != nil {
-		return fmt.Errorf("failed to open registry key: %v", err)
+		return fmt.Errorf("failed to open registry key (most likely not admin make sure to run this as admin) %v", err)
 	}
 	defer key.Close()
 
